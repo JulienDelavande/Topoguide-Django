@@ -15,6 +15,9 @@ class Itineraire(models.Model):
     CHOIX_DIFFICULTEE = ((1,"Très facile"), (2, "Facile"), (3, "Moyenne"), (4, "Difficile"), (5, "Très difficile"))
     difficulte_estimee = models.IntegerField(default=3, choices=CHOIX_DIFFICULTEE)
 
+    def __str__(self):
+        return self.titre
+
 class Sortie(models.Model):
     utilisateur = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     itineraire = models.ForeignKey("Itineraire", on_delete=models.CASCADE)
@@ -22,3 +25,6 @@ class Sortie(models.Model):
     duree_reelle = models.IntegerField(name="Durée réelle (en h)")
     CHOIX_DIFFICULTEE = ((1,"Très facile"), (2, "Facile"), (3, "Moyenne"), (4, "Difficile"), (5, "Très difficile"))
     difficulte_estimee = models.IntegerField(default=3, choices=CHOIX_DIFFICULTEE)
+
+    def __str__(self):
+        return self.itineraire.titre

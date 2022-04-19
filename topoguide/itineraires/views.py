@@ -1,3 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Itineraire
+
+def listeItineraires(request):
+    ListeItineraires = Itineraire.objects.all()
+    context = {"ListeItineraires" : ListeItineraires}
+    return render(request, "itineraires/listeItineraires.html", context)
