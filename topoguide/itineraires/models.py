@@ -1,7 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class Intineraire(models.Model, name="Nom de la sortie"):
-    titre = models.CharField(max_length=200)
+
+class Itineraire(models.Model):
+    titre = models.CharField(max_length=200,  name="Nom de la sortie")
     point_de_depart = models.CharField(max_length=200, name="Point de départ")
     description = models.CharField(max_length=1000, name="Description")
     altitude_de_depart = models.FloatField()
@@ -10,11 +12,13 @@ class Intineraire(models.Model, name="Nom de la sortie"):
     denivele_positif_cumule = models.FloatField()
     denivele_negatif_cumule = models.FloatField()
     duree_estime = models.IntegerField(name="Durée estimée (en h)")
-    difficulte_estimee = models.IntegerField(choices=[1,2,3,4,5])
+    CHOIX_DIFFICULTEE = ((1,"Très facile"), (2, "Facile"), (3, "Moyenne"), (4, "Difficile"), (5, "Très difficile"))
+    difficulte_estimee = models.IntegerField(default=3, choices=CHOIX_DIFFICULTEE)
 
 class Sortie(models.Model):
-    #utilisateur = models.ForeignKey("User", on_delete=models.CASCADE)
-    itineraire =models.ForeignKey("Itineraire", on_delete=models.CASCADE)
+    utilisateur = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
+    itineraire = models.ForeignKey("Itineraire", on_delete=models.CASCADE)
     date_sortie = models.DateField()
     duree_reelle = models.IntegerField(name="Durée réelle (en h)")
-    difficulte_estimee = models.IntegerField(choices=[1,2,3,4,5])
+    CHOIX_DIFFICULTEE = ((1,"Très facile"), (2, "Facile"), (3, "Moyenne"), (4, "Difficile"), (5, "Très difficile"))
+    difficulte_estimee = models.IntegerField(default=3, choices=CHOIX_DIFFICULTEE)
