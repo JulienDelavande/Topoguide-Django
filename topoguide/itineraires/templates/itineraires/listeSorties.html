@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ itineraire }}</h1>
+    <h2>Liste des sorties:</h2>
+
+    <table>
+        <tr>
+            <th>Utilisateur</th><th>Durée réelle</th><th>Difficultée estimée</th>
+        </tr>
+        {% for sortie in ListeSorties %}
+        <tr>
+            <td>{{ sortie.utilisateur }}</td>
+            <td>{{ sortie.duree_reelle }} h</td>
+            <td>{{ sortie.difficulte_estimee }}/5</td>
+            <td><a href={% url 'itineraires:sortieDetails' sortie.id %}>Consulter</a></td>
+            {% if utilisateur == sortie.utilisateur %}
+            <td><a href={% url 'itineraires:ajouterModifSortie' sortie.id %}>Modifier</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+
+{% endblock content %}

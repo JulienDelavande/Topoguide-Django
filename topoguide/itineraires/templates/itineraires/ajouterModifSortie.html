@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+<p>Saisissez votre sortie:</p>
+
+    <div class="clearfix">
+        <div class="float-right pb-3">
+            {% block form %} <form action="{% url 'itineraires:ajouterModifSortie' sortie_id %}" method="post" class="form">{% endblock form %}
+                {% csrf_token %}
+                {{ form }}
+                  <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+{%endblock content%}

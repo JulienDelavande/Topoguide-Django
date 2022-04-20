@@ -1,12 +1,14 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block content %}
+
+    
 
     <h1>Liste des itinéraires:</h1>
 
     <ul>
         {% for itineraire in ListeItineraires %}
-            <li>{{ itineraire }}</li>
+            <li><a href={% url "itineraires:listeSorties" itineraire.id %}> {{ itineraire.titre }} </a> </li>
         {% endfor %}
     </ul>
 

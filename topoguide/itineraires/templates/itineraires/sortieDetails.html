@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>{{ sortie }}</h1>
+    <table>
+        <tr>
+            <th>utilisateur :</th><td>{{sortie.utilisateur}}</td>
+        </tr>
+        <tr>
+            <th>itineraire :</th><td>{{sortie.itineraire}}</td>
+        </tr>    
+        <tr>
+            <th>date_sortie :</th><td>{{sortie.date_sortie}}</td>
+        </tr>
+        <tr>
+            <th>duree_reelle :</th><td>{{sortie.duree_reelle}} h</td>
+        </tr>
+        <tr>
+            <th>difficulte_estimee :</th><td>{{sortie.difficulte_estimee}}/5</td>
+        </tr>
+    
+    </table>
+
+    
+
+{% endblock content %}
