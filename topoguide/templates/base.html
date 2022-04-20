@@ -6,6 +6,12 @@
     </head>
 
     <body>
+        {% block menu%}
+            <a href={% url "login" %}>Login</a>
+            <a href={% url "itineraires:ajouterModifSortie" 0 %}>Ajouter une sortie</a>
+            <a href={% url "itineraires:listeItineraires" %}>menu principal</a>
+            <a href={% url "logout" %}>Logout</a>
+        {% endblock menu %}
         {% block content %}{% endblock %}
     </body>
     
