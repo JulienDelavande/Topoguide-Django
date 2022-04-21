@@ -1,17 +1,30 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block staticFiles %}
+    <link rel="stylesheet" type="text/css" href={% static "itineraires/listeItineraires.css" %}>
+{% endblock staticFiles %}
 
 {% block content %}
-
     
 <div class="container mt-3">
     <h1>Liste des itinéraires:</h1>
     
 
-    <div class="list-group">
-        {% for itineraire in ListeItineraires %}
-            <a class="list-group-item list-group-item-action" href={% url "itineraires:listeSorties" itineraire.id %}> {{ itineraire.titre }} </a> 
-        {% endfor %}
-        </div>
-</div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Itinéraire</th>
+                <th>Durée estimée</th>
+                <th>Difficultée estimée</th>
+            {% for itineraire in ListeItineraires %}
+                <tr class="tr-bkg">
+                    <td><a href={% url "itineraires:listeSorties" itineraire.id %}>{{ itineraire.titre }} </a></td>
+                    <td><a href={% url "itineraires:listeSorties" itineraire.id %}>{{ itineraire.difficulte_estimee}} h </a></td>
+                    <td><a href={% url "itineraires:listeSorties" itineraire.id %}>{{ itineraire.difficulte_estimee}}/5 </a></td>
+                </tr>
+            {% endfor %}
+            </table>
+    </div>
 
 {% endblock content %}
