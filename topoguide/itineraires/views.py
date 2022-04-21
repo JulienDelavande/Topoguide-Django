@@ -31,7 +31,7 @@ def listeSorties(request, itineraire_id):
     Si l'utilisateur est connecté, il peut modifier ses sorties et ajouter des sorties
     """
     itineraireSortie = get_object_or_404(Itineraire, pk = itineraire_id)
-    ListeSorties = Sortie.objects.all()
+    ListeSorties = Sortie.objects.filter(itineraire = itineraireSortie)
     context = {"itineraire":itineraireSortie, "ListeSorties":ListeSorties}
     return render(request, "itineraires/listeSorties.html", context)
 
@@ -95,5 +95,5 @@ def ajouterModifSortie(request,sortie_id):
 
     else:
         form = SortieForm(instance=sortie)
-    context = {'form':form, 'sortie_id':sortie_id}
+    context = {'form':form, 'sortie_id':sortie_id, 'sortie':sortie}
     return render(request, 'itineraires/ajouterModifSortie.html', context)
