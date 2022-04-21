@@ -16,7 +16,7 @@ def listeItineraires(request):
     Si l'utilisateur est connecté ajouter des sorties
     """
     ListeItineraires = Itineraire.objects.all()
-    context = {"ListeItineraires" : ListeItineraires}
+    context = {"ListeItineraires" : ListeItineraires, 'utilisateur':request.user}
     return render(request, "itineraires/listeItineraires.html", context)
 
 
@@ -32,8 +32,7 @@ def listeSorties(request, itineraire_id):
     """
     itineraireSortie = get_object_or_404(Itineraire, pk = itineraire_id)
     ListeSorties = Sortie.objects.all()
-    utilisateur = request.user
-    context = {"itineraire":itineraireSortie, "ListeSorties":ListeSorties, 'utilisateur':utilisateur}
+    context = {"itineraire":itineraireSortie, "ListeSorties":ListeSorties}
     return render(request, "itineraires/listeSorties.html", context)
 
 
