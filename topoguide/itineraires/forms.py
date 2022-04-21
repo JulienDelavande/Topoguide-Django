@@ -8,4 +8,4 @@ class SortieForm(forms.ModelForm):
     """
     class Meta:
         model = Sortie
-        fields = ['itineraire', 'date_sortie', 'duree_reelle', 'difficulte_estimee']
+        fields = ['itineraire', 'date_sortie', 'duree_reelle', 'difficulte_estimee', 'nombre_participant', 'experience_groupe', 'meteo' ]
