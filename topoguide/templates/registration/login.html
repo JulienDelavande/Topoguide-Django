@@ -1,12 +1,17 @@
 {% extends "base.html" %}
+{% load bootstrap5 %}
 
 {% block content %}
 
-<form method="post" action="{% url 'login' %}">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="login">
-    <input type="hidden" name="next" value="{{ next }}">
-</form>
+<h1>Topoguide</h1>
+<h2>Connectez-vous pour partager vos sorties</h2>
 
+<div class="container-sm p-5 my-5 border">
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="submit" value="login">
+        <input type="hidden" name="next" value="{{ next }}">
+    </form>
+</div>
 {% endblock content %}
