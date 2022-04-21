@@ -18,6 +18,10 @@
             </form>
         </div>
     </div>
+    {% if sortie.itineraire.id %}
+        <a href={% url 'itineraires:listeSorties' sortie.itineraire.id %} class="btn btn-warning">Retour</a>
+    {% endif %}
 </div>
+
 
 {%endblock content%}

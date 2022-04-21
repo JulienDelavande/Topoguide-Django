@@ -53,12 +53,11 @@
                 <td>{{ sortie.utilisateur }}</td>
                 <td>{{ sortie.duree_reelle }} h</td>
                 <td>{{ sortie.difficulte_estimee }}/5</td>
-                <td><a href={% url 'itineraires:sortieDetails' sortie.id %} class="btn btn-primary">Consulter</a></td>
+                <td><a href={% url 'itineraires:sortieDetails' sortie.id %} class="btn btn-primary">Consulter</a>
                 {% if request.user == sortie.utilisateur %}
-                <td><a href={% url 'itineraires:ajouterModifSortie' sortie.id %} class="btn btn-success">Modifier</a></td>
-                {% else %}
-                <td></td>
+                <a href={% url 'itineraires:ajouterModifSortie' sortie.id %} class="btn btn-success">Modifier</a>
                 {% endif %}
+                </td>
             </tr>
             {% endfor %}
         </table>

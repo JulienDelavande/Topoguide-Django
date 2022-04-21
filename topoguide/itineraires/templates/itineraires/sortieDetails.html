@@ -32,6 +32,11 @@
         </tr>
     
     </table>
+
+    <a href={% url 'itineraires:listeSorties' sortie.itineraire.id %} class="btn btn-warning">Retour</a>
+    {% if request.user == sortie.utilisateur %}
+        <a href={% url 'itineraires:ajouterModifSortie' sortie.id %} class="btn btn-success">Modifier</a>
+    {% endif %}
 </div>
 
 
