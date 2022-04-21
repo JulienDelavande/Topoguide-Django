@@ -1,20 +1,23 @@
 {% extends 'base.html' %}
-
+{% load bootstrap5 %}
 
 
 
 {% block content %}
 
-<p>Saisissez votre sortie:</p>
 
+
+    <div class="container p-5 my-5 border">
+        <h1>Saisissez votre sortie:</h1>
     <div class="clearfix">
         <div class="float-right pb-3">
-            {% block form %} <form action="{% url 'itineraires:ajouterModifSortie' sortie_id %}" method="post" class="form">{% endblock form %}
+            <form action="{% url 'itineraires:ajouterModifSortie' sortie_id %}" method="post" class="form">
                 {% csrf_token %}
-                {{ form }}
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                {% bootstrap_form form %}
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
+</div>
 
 {%endblock content%}

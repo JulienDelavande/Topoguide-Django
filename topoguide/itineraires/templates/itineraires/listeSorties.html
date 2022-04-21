@@ -2,24 +2,67 @@
 
 {% block content %}
 
+<div class="container mt-3">
     <h1>{{ itineraire }}</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>description:</th>
+            <td>{{ itineraire.description }}</td>
+        </tr>
+        <tr>
+            <th>altitude de depart:</th>
+            <td>{{ itineraire.altitude_de_depart }} m</td>
+        </tr>
+        <tr>
+            <th>altitude min:</th>
+            <td>{{ itineraire.altitude_min }} m</td>
+        </tr>
+        <tr>
+            <th>altitude max:</th>
+            <td>{{ itineraire.altitude_max }} m</td>
+        </tr>
+        <tr>
+            <th>denivele positif cumule:</th>
+            <td>{{ itineraire.denivele_positif_cumule }} m</td>
+        </tr>
+        <tr>
+            <th>denivele negatif cumule:</th>
+            <td>-{{ itineraire.denivele_negatif_cumule }} m</td>
+        </tr>
+        <tr>
+            <th>duree estime:</th>
+            <td>{{ itineraire.duree_estime }} h</td>
+        </tr>
+        <tr>
+            <th>difficulte estimee:</th>
+            <td>{{ itineraire.difficulte_estimee }}/5</td>
+        </tr>
+    </table>
+</div>
+
+<div class="container mt-3">
     <h2>Liste des sorties:</h2>
 
-    <table>
-        <tr>
-            <th>Utilisateur</th><th>Durée réelle</th><th>Difficultée estimée</th>
-        </tr>
-        {% for sortie in ListeSorties %}
-        <tr>
-            <td>{{ sortie.utilisateur }}</td>
-            <td>{{ sortie.duree_reelle }} h</td>
-            <td>{{ sortie.difficulte_estimee }}/5</td>
-            <td><a href={% url 'itineraires:sortieDetails' sortie.id %}>Consulter</a></td>
-            {% if utilisateur == sortie.utilisateur %}
-            <td><a href={% url 'itineraires:ajouterModifSortie' sortie.id %}>Modifier</a></td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <tr>
+                <th>Utilisateur</th><th>Durée réelle</th><th>Difficultée estimée</th><th></th><th></th>
+            </tr>
+            {% for sortie in ListeSorties %}
+            <tr>
+                <td>{{ sortie.utilisateur }}</td>
+                <td>{{ sortie.duree_reelle }} h</td>
+                <td>{{ sortie.difficulte_estimee }}/5</td>
+                <td><a href={% url 'itineraires:sortieDetails' sortie.id %} class="btn btn-primary">Consulter</a></td>
+                {% if request.user == sortie.utilisateur %}
+                <td><a href={% url 'itineraires:ajouterModifSortie' sortie.id %} class="btn btn-success">Modifier</a></td>
+                {% else %}
+                <td></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 
 {% endblock content %}

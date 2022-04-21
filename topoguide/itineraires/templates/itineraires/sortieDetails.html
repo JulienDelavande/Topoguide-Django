@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 
     <h1>{{ sortie }}</h1>
@@ -11,16 +12,27 @@
             <th>itineraire :</th><td>{{sortie.itineraire}}</td>
         </tr>    
         <tr>
-            <th>date_sortie :</th><td>{{sortie.date_sortie}}</td>
+            <th>date de la sortie :</th><td>{{sortie.date_sortie}}</td>
         </tr>
         <tr>
-            <th>duree_reelle :</th><td>{{sortie.duree_reelle}} h</td>
+            <th>duree réelle :</th><td>{{sortie.duree_reelle}} h</td>
         </tr>
         <tr>
-            <th>difficulte_estimee :</th><td>{{sortie.difficulte_estimee}}/5</td>
+            <th>nombre de participant(s) :</th><td>{{sortie.nombre_participant}}</td>
+        </tr>
+        <tr>
+            <th>experience du groupe :</th><td>{{sortie.experience_groupe}}</td>
+        </tr>
+        <tr>
+            <th>météo :</th><td>{{sortie.meteo}}</td>
+        </tr>
+        <tr>
+            <th>difficulté estimée :</th><td>{{sortie.difficulte_estimee}}/5</td>
         </tr>
     
     </table>
+
+
 
     
 
