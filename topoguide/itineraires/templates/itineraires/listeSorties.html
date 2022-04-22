@@ -2,6 +2,8 @@
 
 {% block content %}
 
+
+<!--Tableau représentant les détails de l'itinéraire pour lequel les sorties sont associées-->
 <div class="container mt-3">
     <h1>{{ itineraire }}</h1>
     <table class="table table-striped">
@@ -40,6 +42,8 @@
     </table>
 </div>
 
+
+<!--Liste des sorties associées à l'itinéraire-->
 <div class="container mt-3">
     <h2>Liste des sorties:</h2>
 
@@ -53,7 +57,10 @@
                 <td>{{ sortie.utilisateur }}</td>
                 <td>{{ sortie.duree_reelle }} h</td>
                 <td>{{ sortie.difficulte_estimee }}/5</td>
+                <!--Bouton consulter qui renvois vers la page de détails de la sortie-->
                 <td><a href={% url 'itineraires:sortieDetails' sortie.id %} class="btn btn-primary">Consulter</a>
+                <!--Bouton modifier qui renvois vers la page de modification de la sortie. 
+                    Ne s'affiche que si la sortie a été saisie par l'utilisateur présentement connecté-->
                 {% if request.user == sortie.utilisateur %}
                 <a href={% url 'itineraires:ajouterModifSortie' sortie.id %} class="btn btn-success">Modifier</a>
                 {% endif %}

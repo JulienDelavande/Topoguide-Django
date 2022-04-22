@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
+<!--importation d'un fichier de style pour modifier l'apparence des liens cliquables-->
 {% block staticFiles %}
     <link rel="stylesheet" type="text/css" href={% static "itineraires/listeItineraires.css" %}>
 {% endblock staticFiles %}
@@ -10,7 +11,7 @@
 <div class="container mt-3">
     <h1>Liste des itinéraires:</h1>
     
-
+    <!--Tableau représentant la liste des itinéraires disponnibles-->
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
@@ -18,6 +19,7 @@
                 <th>Durée estimée</th>
                 <th>Difficultée estimée</th>
             {% for itineraire in ListeItineraires %}
+                <!--Chaque case de l'itinéraire est "cliquable" et renvoie vers la sortie correspondante-->
                 <tr class="tr-bkg">
                     <td><a href={% url "itineraires:listeSorties" itineraire.id %}>{{ itineraire.titre }} </a></td>
                     <td><a href={% url "itineraires:listeSorties" itineraire.id %}>{{ itineraire.difficulte_estimee}} h </a></td>

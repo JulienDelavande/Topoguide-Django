@@ -4,6 +4,11 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+        <!--En-tête que dont héritera tous les fichiers html
+            -Ajout d'un titre à la page
+            -Définition des méta-données
+            -Ajout de bootstrap5
+            -Block permetant d'ajouter des fichiers statiques-->
         <meta charset="utf-8">
         <title>{% block title %}Topoguide{% endblock title%}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +20,7 @@
     </head>
 
     <style>
+        /*Affichage d'une image de fond*/
         body {
           background-image: url({% static 'hiking-wallpapers.jpg' %});
           background-repeat: no-repeat;
@@ -24,8 +30,12 @@
     </style>
 
     <body>
+        <!--Barre de navigation-->
             {% block menu%}
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+
+                <!--Affichage du nom de l'utilisateur si il est connecté ou de login sinon. 
+                    Les deux textes renvois vers la page de login-->
                 {% if request.user.is_active %}
                     <a class="nav-link active text-light" href={% url "login" %}>Bienvenue {{ request.user }}</a>
                 {% endif %}
@@ -33,17 +43,24 @@
                     <a class="nav-link active text-light" href={% url "login" %}>Connexion</a>
                 {% endif %}
                 
+                 <!--Lien pour ajouter une sortie.
+                    Renvois vers la page de login si l'utilisateur n'est pas connecté-->       
                 <a class="nav-link active text-light" href={% url "itineraires:ajouterModifSortie" 0 %}>Ajouter une sortie</a>
+
+                <!--Lien qui renvoie vers la liste des itinéraires-->
                 <a class="nav-link active text-light" href={% url "itineraires:listeItineraires" %}>Menu principal</a>
+
+                <!--Bouton de déconnexion (seulement si l'utilisateur est connecté)-->
                 {% if request.user.is_active %}
                     <a class="nav-link active text-light text-right" href={% url "logout" %} >Déconnexion</a>
                 {% endif %}
                 
             </nav>
-            
             {% endblock menu %}
+
+            <!--Block pour acceuillir le code propre à chaque page html-->
             <div class="container-fluid" style="margin-top:80px">
-            {% block content %}{% endblock %}
+                {% block content %}{% endblock %}
             </div>
     </body>
     

@@ -3,6 +3,7 @@
 
 {% block content %}
 
+<!--Tableau contenant les détails d'une sortie-->
 <div class="container mt-3">
     <h1>{{ sortie }}</h1>
     <table class="table">
@@ -33,10 +34,16 @@
     
     </table>
 
+    <!--Bouton de retour en arrière (pour revenir à la page de listing des sorties associée 
+        à l'itinéraire de la sortie que l'utilsateur consulte actuellement)-->
     <a href={% url 'itineraires:listeSorties' sortie.itineraire.id %} class="btn btn-warning">Retour</a>
+
+    <!--Bouton qui renvoie vers la page de modification d'une sortie.
+        N'est visible que si l'utilsateur est connecté et qu'il a saisie la présente sortie-->
     {% if request.user == sortie.utilisateur %}
         <a href={% url 'itineraires:ajouterModifSortie' sortie.id %} class="btn btn-success">Modifier</a>
     {% endif %}
+    
 </div>
 
 

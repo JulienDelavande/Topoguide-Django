@@ -7,8 +7,10 @@
 
 
 
-    <div class="container p-5 my-5 border">
-        <h1>Saisissez votre sortie:</h1>
+<div class="container p-5 my-5 border">
+    <h1>Saisissez votre sortie:</h1>
+
+    <!--Formulaire pour saisir ou modifier une sortie-->
     <div class="clearfix">
         <div class="float-right pb-3">
             <form action="{% url 'itineraires:ajouterModifSortie' sortie_id %}" method="post" class="form">
@@ -18,9 +20,12 @@
             </form>
         </div>
     </div>
+
+    <!--Bouton pour revenir en arrière (ne fonctionne que pour la modification de sortie)-->
     {% if sortie.itineraire.id %}
         <a href={% url 'itineraires:listeSorties' sortie.itineraire.id %} class="btn btn-warning">Retour</a>
     {% endif %}
+
 </div>
 
 

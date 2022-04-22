@@ -1,3 +1,5 @@
+/*Permet de modifier l'affichage des liens cliquables*/
+
 table tr td a {
     display:block;
     height:100%;
