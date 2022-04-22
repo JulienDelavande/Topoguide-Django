@@ -6,11 +6,13 @@
     <head>
         <!--En-tête que dont héritera tous les fichiers html
             -Ajout d'un titre à la page
+            -Icone de randonneur
             -Définition des méta-données
             -Ajout de bootstrap5
             -Block permetant d'ajouter des fichiers statiques-->
         <meta charset="utf-8">
         <title>{% block title %}Topoguide{% endblock title%}</title>
+        <link rel="icon" type="image/x-icon" href={% static 'icone-randonneur.png' %}>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
