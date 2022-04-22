@@ -35,28 +35,36 @@
         <!--Barre de navigation-->
             {% block menu%}
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+                <table>
+                    <!--Affichage du nom de l'utilisateur si il est connecté ou de login sinon. 
+                        Les deux textes renvois vers la page de login-->
+                    <td>
+                        {% if request.user.is_active %}
+                            <a class="nav-link active text-light" href={% url "login" %}>Bienvenue {{ request.user }}</a>
+                        {% else %}
+                            <a class="nav-link active text-light" href={% url "login" %}>Connexion</a>
+                        {% endif %}
+                    </td>
+                    
+                    <!--Lien pour ajouter une sortie.
+                        Renvois vers la page de login si l'utilisateur n'est pas connecté-->
+                    <td>       
+                        <a class="nav-link active text-light" href={% url "itineraires:ajouterModifSortie" 0 %}>Ajouter une sortie</a>
+                    </td>
 
-                <!--Affichage du nom de l'utilisateur si il est connecté ou de login sinon. 
-                    Les deux textes renvois vers la page de login-->
-                {% if request.user.is_active %}
-                    <a class="nav-link active text-light" href={% url "login" %}>Bienvenue {{ request.user }}</a>
-                {% endif %}
-                {% if not request.user.is_active %}
-                    <a class="nav-link active text-light" href={% url "login" %}>Connexion</a>
-                {% endif %}
-                
-                 <!--Lien pour ajouter une sortie.
-                    Renvois vers la page de login si l'utilisateur n'est pas connecté-->       
-                <a class="nav-link active text-light" href={% url "itineraires:ajouterModifSortie" 0 %}>Ajouter une sortie</a>
+                    <!--Lien qui renvoie vers la liste des itinéraires-->
+                    <td>
+                        <a class="nav-link active text-light" href={% url "itineraires:listeItineraires" %}>Menu principal</a>
+                    </td>
+                    <!--Bouton de déconnexion (seulement si l'utilisateur est connecté)-->
 
-                <!--Lien qui renvoie vers la liste des itinéraires-->
-                <a class="nav-link active text-light" href={% url "itineraires:listeItineraires" %}>Menu principal</a>
-
-                <!--Bouton de déconnexion (seulement si l'utilisateur est connecté)-->
-                {% if request.user.is_active %}
-                    <a class="nav-link active text-light text-right" href={% url "logout" %} >Déconnexion</a>
-                {% endif %}
-                
+                    <td>
+                        {% if request.user.is_active %}
+                            <a class="nav-link active text-light item-right" href={% url "logout" %} >Déconnexion</a>
+                        {% endif %}
+                    </td>
+                </tr>
+                </table>
             </nav>
             {% endblock menu %}
 

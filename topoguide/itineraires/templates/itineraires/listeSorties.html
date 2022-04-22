@@ -50,11 +50,12 @@
     <div class="table-responsive">
         <table class="table table-striped">
             <tr>
-                <th>Utilisateur</th><th>Durée réelle</th><th>Difficultée estimée</th><th></th><th></th>
+                <th>Utilisateur</th><th>Date de la sortie</th><th>Durée réelle</th><th>Difficultée estimée</th><th></th><th></th>
             </tr>
             {% for sortie in ListeSorties %}
             <tr>
                 <td>{{ sortie.utilisateur }}</td>
+                <td>{{ sortie.date_sortie }}</td>
                 <td>{{ sortie.duree_reelle }} h</td>
                 <td>{{ sortie.difficulte_estimee }}/5</td>
                 <!--Bouton consulter qui renvois vers la page de détails de la sortie-->
