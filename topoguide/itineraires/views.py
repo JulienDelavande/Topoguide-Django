@@ -59,7 +59,9 @@ def ajouterSortie(request):
     if request.method == 'POST':
         form = SortieForm(request.POST)
         if form.is_valid():
-            sortie = form.save()
+            sortie = form.save(commit=False)
+            sortie.utilisateur = request.user
+            sortie.save()
             context = {'sortie':sortie}
             return render(request, 'itineraires/sortieDetails.html', context)
 
@@ -88,7 +90,7 @@ def ajouterModifSortie(request,sortie_id):
         form = SortieForm(request.POST, instance=sortie)
         if form.is_valid():
             sortie = form.save(commit=False)
-            sortie.user = request.user
+            sortie.utilisateur = request.user
             sortie.save()
             context = {'sortie':sortie}
             return render(request, 'itineraires/sortieDetails.html', context)
