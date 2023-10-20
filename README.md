@@ -47,5 +47,3 @@ Topoguide est conçu pour offrir une expérience utilisateur transparente, tant 
 - **Modification de Sortie** : Les utilisateurs connectés peuvent également modifier les sorties qu'ils ont ajoutées via la page `/itinéraires/AjouterModifierSortie`.
 
 Topoguide offre ainsi une expérience complète aux randonneurs pour explorer, planifier et partager leurs aventures en plein air. Profitez de l'application et découvrez de nouveaux horizons !
-
-*Note : Assurez-vous d'ajouter les captures d'écran ou les images pertinentes dans le répertoire `images` de votre projet pour afficher correctement l'image d'illustration.*
