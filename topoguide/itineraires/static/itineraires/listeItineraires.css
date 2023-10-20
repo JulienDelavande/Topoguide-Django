@@ -10,7 +10,7 @@ a:link, a:visited {
     text-decoration: none;
   }
 .tr-bkg:hover {
-    background:rgba(250, 210, 116, 0.712);
+    background:rgba(125, 250, 116, 0.712);
 }
 
 body {
