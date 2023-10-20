@@ -1,6 +1,6 @@
 # Topoguide - Application pour les Randonneurs
 
-![Topoguide](topoguide-screenshot.png)
+![Topoguide](topoguide-screenshot2.png)
 
 Topoguide est une application web construite avec Django, destinée aux randonneurs et aux amateurs de plein air. Elle offre aux utilisateurs la possibilité de découvrir, de parcourir et de partager des itinéraires de randonnée passionnants, ainsi que des informations détaillées sur les sorties associées à ces itinéraires.
 
